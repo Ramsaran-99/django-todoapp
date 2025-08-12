@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import List
 
-# Create your views here.
 
 def start(request):
     return render(request,'start.html')
