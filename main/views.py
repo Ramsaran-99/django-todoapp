@@ -18,7 +18,7 @@ def homepage(request):
         )
         new_description.save()
 
-    return render(request,'trial/index2.html',
+    return render(request,'index2.html',
                   {
                       "lists":list,
                   })
@@ -30,3 +30,14 @@ def delete(request,id):
     return redirect("home")
 
     
+'''
+
+edit button
+priority list
+status
+https://www.figma.com/community/file/1358477027647527963/to-do-list-web-app-design
+reminder - sending mail before an hour
+
+
+
+'''
