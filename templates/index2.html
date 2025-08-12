@@ -1,0 +1,44 @@
+{% extends 'trial/base.html' %}
+{% load static %} 
+
+
+{% block title %} Todo app {% endblock title %}
+
+  {% block body %}
+  <div class="container">
+      <header class="text-center text-light my-4">
+        <h1 class="mb-4">Todo List</h1>
+        <form class="search" method="post">
+          {% csrf_token %}
+
+        </form>
+      </header>
+
+      <ul class="list-group todos mx-auto text-light delete">
+        {% for list in lists %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <h2>{{list.task_heading}}</h2>
+          <h3>{{list.task}}</h3>
+            <form action="{% url 'delete' id=list.id %}" method="post">
+              {% csrf_token %}
+              <i class="far fa-trash-alt delete">
+                <button type="submit">Delete Task</button>
+              </i>
+
+            </form>
+        </li>
+        {% endfor %}
+
+      </ul>
+
+      <form class="add text-center my-4" method="post">
+        {% csrf_token %}
+        <input class="form-control m-auto" type="text" name="heading" placeholder="Task.."/>
+        <br>
+        <textarea name="description"class="form-control m-auto" placeholder="Description.."></textarea>
+        <br>
+
+        <button type="submit" class="btn btn-light text-center">Add Task...</button>
+      </form>
+    </div>
+{% endblock body %}
