@@ -11,10 +11,14 @@ def homepage(request):
     if request.method=="POST":
         heading=request.POST.get('heading')
         description=request.POST.get('description')
+        status=request.POST.get('sts')
+        urgency=request.POST.get('urg')
 
         new_description=List(
             task=description,
             task_heading=heading,
+            urgency=urgency,
+            status=status,
         )
         new_description.save()
 
